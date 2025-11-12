@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dermatology AI Lesion Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧬 Dermatology AI Lesion Analyzer</h1>
+            <p>AI-powered skin lesion classification with visual explanations</p>
+        </header>
+        
+        <div class="disclaimer">
+            ⚠️ <strong>Disclaimer:</strong> This tool is for informational and research purposes only. 
+            Always consult a healthcare professional for medical advice.
+        </div>
+        
+        <div class="upload-section">
+    <h2>Upload or Capture Skin Lesion Image</h2>
+    <p>Supported formats: JPG, PNG, JPEG (max 10MB)</p>
+
+    <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">📁</div>
+        <h3>Drag & Drop your image here</h3>
+        <p>or click to browse files</p>
+    </div>
+
+    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+
+    <div class="button-group">
+        <button class="btn" id="cameraBtn">📷 Take a Photo</button>
+        <button class="btn" id="analyzeBtn" disabled>Analyze Image</button>
+    </div>
+</div>
+
+<!-- Camera Modal -->
+<div id="cameraModal" class="camera-modal">
+    <div class="camera-container">
+        <video id="cameraStream" autoplay playsinline></video>
+        <div class="camera-controls">
+            <button class="btn" id="captureBtn">📸 Capture</button>
+            <button class="btn cancel-btn" id="closeCameraBtn">❌ Close</button>
+        </div>
+    </div>
+</div>
+
+        
+        <div class="loading" id="loadingSection">
+            <div class="spinner"></div>
+            <h3>Analyzing image...</h3>
+            <p>This may take a few seconds</p>
+        </div>
+        
+        <div class="results-section" id="resultsSection">
+            <h2>Analysis Results</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h3>Diagnosis</h3>
+                    <div class="diagnosis" id="diagnosisText">-</div>
+                    <div class="confidence" id="confidenceText">-</div>
+                    
+                    <div class="confidence-bars" id="confidenceBars">
+                        <!-- Confidence bars will be generated here -->
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <h3>Visual Explanation</h3>
+                    <div id="imageComparison">
+                        <img id="resultImage" alt="Analysis result" style="display: none;">
+                    </div>
+                    <p>Red areas indicate regions most influential for the diagnosis</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn" onclick="resetAnalysis()">Analyze Another Image</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
